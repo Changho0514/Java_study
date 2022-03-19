@@ -1,25 +1,38 @@
 public class Main {
     public static void main(String[] args) {
-        // 사람 1
-        Person p1 = new Person("김신의", 28);
-        p1.setCashAmount(30000);
+        // 사람 선언
+        Person p1 = new Person();
+        p1.name = "김신의";
+        p1.age = 28;
+        p1.cashAmount = 30000;
 
-        // 은행 계좌 1
-        BankAccount a1 = new BankAccount(p1);
-        a1.setBalance(100000);
-        p1.setAccount(a1);
 
-        // 사람 2
-        Person p2 = new Person("문종모", 25, 100000);
+        // 은행 계좌 생성
+        BankAccount a1 = new BankAccount();
+        a1.balance = 100000;
 
-        // 은행 계좌 2
-        BankAccount a2 = new BankAccount(500000, p2);
-        p2.setAccount(a2);
+        p1.account = a1;
+        a1.owner = p1;
 
-        // 계좌 이체 테스트
-        a2.transfer(a1, 200000);
-        a1.transfer(p2, 150000);
-        p2.transfer(a1, 270000);
-        p1.transfer(p2, 130000);
+        // 3 - 4. write code here
+        Person p2 = new Person();
+        p2.name ="최창호";
+        p2.age = 29;
+        p2.cashAmount = 100000;
+
+        BankAccount a2 = new BankAccount();
+        a2.balance = 500000;
+
+        a2.owner = p2;
+        p2.account = a2;
+
+        // test
+        System.out.println(a2.deposit(30000));
+        System.out.println(a2.withdraw(170000));
+        System.out.println(a2.deposit(620000));
+        System.out.println(a2.withdraw(890000));
+
+
     }
+
 }
